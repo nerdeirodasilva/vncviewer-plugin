@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 
 public class ConsoleNoteButton extends ConsoleNote {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private final String caption;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private final String caption;
     private final String html;
 
     public ConsoleNoteButton(String caption, String html) {
