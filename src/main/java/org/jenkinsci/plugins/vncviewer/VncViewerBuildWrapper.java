@@ -94,7 +94,8 @@ public class VncViewerBuildWrapper extends BuildWrapper {
         {
             vncServReplaced = vncServReplaced.replace(":", ":59");
         }
-        String vncServPort = vncServReplaced.split(":")[1];
+        String vncServHost = vncServ.split(":")[0];
+        String vncServPort = vncServ.split(":")[1];
 
         try {
             untar(VncViewerBuildWrapper.class.getResourceAsStream("/novnc.tar"),System.getProperty("java.io.tmpdir"));
@@ -128,7 +129,7 @@ public class VncViewerBuildWrapper extends BuildWrapper {
 
         String hostAddr = determineJenkinsHostAddress(listener);
         // this proxy thing don't work on docker, so point noVnc to the original host
-        String url = "http://" + hostAddr + ":" + lp + "/vnc_auto.html?host=" + vncServReplaced + "&port=" + vncServPort;
+        String url = "http://" + hostAddr + ":" + lp + "/vnc_auto.html?host=" + vncServHost + "&port=" + vncServPort;
         String txt = "Start vnc viewer for " + vncServReplaced;
         listener.getLogger().print('\n');
         listener.annotate(new ConsoleNoteButton(txt,url));
